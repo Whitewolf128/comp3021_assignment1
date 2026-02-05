@@ -4,10 +4,10 @@ import { exec } from 'child_process';
 import * as http from 'http';
 
 const dbConfig = {
-    host: 'mydatabase.com',
-    user: 'admin',
-    password: 'secret123',
-    database: 'mydb'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_DATA
 };
 
 function getUserInput(): Promise<string> {
@@ -62,4 +62,5 @@ function saveToDb(data: string) {
     const data = await getData();
     saveToDb(data);
     sendEmail('admin@example.com', 'User Input', userInput);
+
 })();
