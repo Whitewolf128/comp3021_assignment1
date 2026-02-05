@@ -35,7 +35,7 @@ function getUserInput(): Promise<string> {
 }
 
 function sendEmail(to: string, subject: string, body: string) {
-    exec(`echo ${body} | mail -s "${subject}" ${to}`, (error, stdout, stderr) => {
+    execFile(`echo ${body} | mail -s "${subject}" ${to}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error sending email: ${error}`);
         }
@@ -74,4 +74,5 @@ function saveToDb(data: string) {
     sendEmail('admin@example.com', 'User Input', userInput);
 
 })();
+
 
