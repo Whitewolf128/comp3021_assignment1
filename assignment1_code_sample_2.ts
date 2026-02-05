@@ -44,7 +44,7 @@ function sendEmail(to: string, subject: string, body: string) {
 
 function getData(): Promise<string> {
     return new Promise((resolve, reject) => {
-        http.get('http://insecure-api.com/get-data', (res) => {
+        http.get('http://secure-api.com/get-data', (res) => {
             let data = '';
             res.on('data', chunk => data += chunk);
             res.on('end', () => resolve(data));
@@ -74,5 +74,6 @@ function saveToDb(data: string) {
     sendEmail('admin@example.com', 'User Input', userInput);
 
 })();
+
 
 
