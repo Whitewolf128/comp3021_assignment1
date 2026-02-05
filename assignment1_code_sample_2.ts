@@ -54,7 +54,7 @@ function getData(): Promise<string> {
 
 function saveToDb(data: string) {
     const connection = mysql.createConnection(dbConfig);
-    const query = `INSERT INTO mytable (column1, column2) VALUES ('${data}', 'Another Value')`;
+    const query = 'INSERT INTO mytable (column1, column2) VALUES (?, ?)';
 
     connection.connect();
     connection.query(query, (error, results) => {
@@ -74,6 +74,7 @@ function saveToDb(data: string) {
     sendEmail('admin@example.com', 'User Input', userInput);
 
 })();
+
 
 
 
