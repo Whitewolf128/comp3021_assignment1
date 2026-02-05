@@ -14,7 +14,17 @@ function getUserInput(): Promise<string> {
     const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout
-    });
+    })
+        if (!input.trim()) {
+            alert("Input cant be empty");
+    }
+    else if (input.length < 5)
+    {
+            alert("Input must be at least 5 characters");
+    }
+    else{
+        console.log("The input is valid: ", input);
+    }
 
     return new Promise((resolve) => {
         rl.question('Enter your name: ', (answer) => {
@@ -64,3 +74,4 @@ function saveToDb(data: string) {
     sendEmail('admin@example.com', 'User Input', userInput);
 
 })();
+
